@@ -3,23 +3,23 @@ package com.example.homework2_14.Impl;
 import com.example.homework2_14.Exception.InvalidIndexException;
 import com.example.homework2_14.Exception.NullItemException;
 import com.example.homework2_14.Exception.StorageIsFullException;
-import com.example.homework2_14.Interface.StringList;
+import com.example.homework2_14.Interface.IntegerList;
 
 import java.util.Arrays;
 
-public class StringListImpl implements StringList {
+public class IntegerListImpl implements IntegerList {
     private int size;
-    private final String[] m;
-    public StringListImpl() {
-        m = new String[10];
+    private final Integer[] m;
+    public IntegerListImpl() {
+        m = new Integer[10];
     }
-    public StringListImpl(int initSize) {
-        m = new String[initSize];
+    public IntegerListImpl(int initSize) {
+        m = new Integer[initSize];
     }
 
 
     @Override
-    public String add(String item) {
+    public Integer add(Integer item) {
         validateSize();
         validateItem(item);
         m[size++] = item;
@@ -27,7 +27,7 @@ public class StringListImpl implements StringList {
     }
 
     @Override
-    public String add(int index, String item) {
+    public Integer add(int index, Integer item) {
         validateSize();
         validateItem(item);
         validateIndex(index);
@@ -38,21 +38,21 @@ public class StringListImpl implements StringList {
         }
 
         System.arraycopy(m,index,m,index+1,size-index);
-        m[index] = item;
+        m[size++] = item;
         size++;
         return item;
     }
 
     @Override
-    public String set(int index, String item) {
+    public Integer set(int index, Integer item) {
         validateIndex(index);
         validateItem(item);
-        m[index] = item;
+        m[size++] = item;
         return item;
     }
 
     @Override
-    public String remove(String item) {
+    public Integer remove(Integer item) {
         validateItem(item);
 
         int index = indexOf(item);
@@ -61,10 +61,10 @@ public class StringListImpl implements StringList {
     }
 
     @Override
-    public String remove(int index) {
+    public Integer remove(int index) {
         validateIndex(index);
 
-        String item = m[index];
+        Integer item = m[index];
 
         if (index != size) {
             System.arraycopy(m,index+1,m,index, size-index);
@@ -75,14 +75,14 @@ public class StringListImpl implements StringList {
     }
 
     @Override
-    public boolean contains(String item) {
+    public boolean contains(Integer item) {
         return indexOf(item) >-1;
     }
 
     @Override
-    public int indexOf(String item) {
+    public int indexOf(Integer item) {
         for (int i = 0; i < size; i++) {
-            String s = m[i];
+            Integer s = m[i];
             if (s.equals(item)) {
                 return i;
             }
@@ -91,9 +91,9 @@ public class StringListImpl implements StringList {
     }
 
     @Override
-    public int lastIndexOf(String item) {
+    public int lastIndexOf(Integer item) {
         for (int i = size-1; i >= 0; i--) {
-            String s = m[i];
+            Integer s = m[i];
             if (s.equals(item)) {
                 return i;
             }
@@ -102,13 +102,13 @@ public class StringListImpl implements StringList {
     }
 
     @Override
-    public String get(int index) {
+    public Integer get(int index) {
         validateIndex(index);
-        return m[index];
+        return Integer.valueOf(m[index]);
     }
 
     @Override
-    public boolean equals(StringList otherList) {
+    public boolean equals(IntegerList otherList) {
         return Arrays.equals(this.toArray(), otherList.toArray());
     }
 
@@ -128,11 +128,21 @@ public class StringListImpl implements StringList {
     }
 
     @Override
-    public String[] toArray() {
+    public Integer[] toArray() {
         return Arrays.copyOf(m, size);
     }
 
-    private void validateItem(String item) {
+    @Override
+    public int[] generateRandomArray() {
+        java.util.Random random = new java.util.Random();
+        int[] arr = new int[30];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100_000) + 100_000;
+        }
+        return arr;
+    }
+
+    private void validateItem(Integer item) {
         if (item == null) {
             throw new NullItemException();
         }
