@@ -10,9 +10,11 @@ import java.util.Arrays;
 public class IntegerListImpl implements IntegerList {
     private int size;
     private final Integer[] m;
+
     public IntegerListImpl() {
         m = new Integer[10];
     }
+
     public IntegerListImpl(int initSize) {
         m = new Integer[initSize];
     }
@@ -37,7 +39,7 @@ public class IntegerListImpl implements IntegerList {
             return item;
         }
 
-        System.arraycopy(m,index,m,index+1,size-index);
+        System.arraycopy(m, index, m, index + 1, size - index);
         m[size++] = item;
         size++;
         return item;
@@ -67,7 +69,7 @@ public class IntegerListImpl implements IntegerList {
         Integer item = m[index];
 
         if (index != size) {
-            System.arraycopy(m,index+1,m,index, size-index);
+            System.arraycopy(m, index + 1, m, index, size - index);
         }
 
         size--;
@@ -76,7 +78,7 @@ public class IntegerListImpl implements IntegerList {
 
     @Override
     public boolean contains(Integer item) {
-        return indexOf(item) >-1;
+        return indexOf(item) > -1;
     }
 
     @Override
@@ -92,7 +94,7 @@ public class IntegerListImpl implements IntegerList {
 
     @Override
     public int lastIndexOf(Integer item) {
-        for (int i = size-1; i >= 0; i--) {
+        for (int i = size - 1; i >= 0; i--) {
             Integer s = m[i];
             if (s.equals(item)) {
                 return i;
@@ -131,15 +133,37 @@ public class IntegerListImpl implements IntegerList {
     public Integer[] toArray() {
         return Arrays.copyOf(m, size);
     }
-
     @Override
-    public int[] generateRandomArray() {
-        java.util.Random random = new java.util.Random();
-        int[] arr = new int[30];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(100_000) + 100_000;
+    public void sortSelection(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minElementIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minElementIndex]) {
+                    minElementIndex = j;
+                }
+            }
+            swapElements(arr, i, minElementIndex);
         }
-        return arr;
+    }
+    @Override
+    public boolean binarySearch(int[] arr, int element) {
+        sortSelection(arr);
+        int min = 0;
+        int max = arr.length - 1;
+
+        while (min <= max) {
+            int mid = (min + max) / 2;
+            if (element == arr[mid]) {
+                return true;
+            }
+
+            if (element < arr[mid]) {
+                max = mid - 1;
+            } else {
+                min = mid + 1;
+            }
+        }
+        return false;
     }
 
     private void validateItem(Integer item) {
@@ -147,6 +171,7 @@ public class IntegerListImpl implements IntegerList {
             throw new NullItemException();
         }
     }
+
     private void validateSize() {
         if (size == m.length) {
             throw new StorageIsFullException();
@@ -158,4 +183,11 @@ public class IntegerListImpl implements IntegerList {
             throw new InvalidIndexException();
         }
     }
+
+    private static void swapElements(int[] arr, int indexA, int indexB) {
+        int tmp = arr[indexA];
+        arr[indexA] = arr[indexB];
+        arr[indexB] = tmp;
+    }
+
 }

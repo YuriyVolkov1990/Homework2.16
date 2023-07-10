@@ -75,5 +75,8 @@ public interface IntegerList {
     // из строк в списке
     // и вернуть его.
     Integer[] toArray();
-    int[] generateRandomArray();
+
+    boolean binarySearch(int[] arr, int element);
+
+    void sortSelection(int[] arr);
 }
