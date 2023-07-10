@@ -16,7 +16,6 @@ public class IntegerListImplTest {
         m.add(1);
         assertTrue(m.contains(1));
     }
-
     @Test
     void addByIndex() {
         IntegerListImpl m = new IntegerListImpl(5);

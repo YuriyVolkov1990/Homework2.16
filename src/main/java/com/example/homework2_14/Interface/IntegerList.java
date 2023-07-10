@@ -77,6 +77,5 @@ public interface IntegerList {
     Integer[] toArray();
 
     boolean binarySearch(int[] arr, int element);
-
     void sortSelection(int[] arr);
 }

@@ -80,7 +80,6 @@ public class IntegerListImpl implements IntegerList {
     public boolean contains(Integer item) {
         return indexOf(item) > -1;
     }
-
     @Override
     public int indexOf(Integer item) {
         for (int i = 0; i < size; i++) {
