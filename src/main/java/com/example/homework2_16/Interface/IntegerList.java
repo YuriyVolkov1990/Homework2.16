@@ -1,4 +1,4 @@
-package com.example.homework2_14.Interface;
+package com.example.homework2_16.Interface;
 
 public interface IntegerList {
     // Добавление элемента.
@@ -70,7 +70,6 @@ public interface IntegerList {
 
     // Удалить все элементы из списка.
     void clear();
-
     // Создать новый массив
     // из строк в списке
     // и вернуть его.

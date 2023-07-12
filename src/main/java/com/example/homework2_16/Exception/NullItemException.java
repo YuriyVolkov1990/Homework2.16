@@ -1,4 +1,4 @@
-package com.example.homework2_14.Exception;
+package com.example.homework2_16.Exception;
 
 public class NullItemException extends RuntimeException {
     public NullItemException() {

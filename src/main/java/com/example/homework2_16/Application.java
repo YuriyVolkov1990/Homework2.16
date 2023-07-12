@@ -1,6 +1,5 @@
-package com.example.homework2_14;
+package com.example.homework2_16;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

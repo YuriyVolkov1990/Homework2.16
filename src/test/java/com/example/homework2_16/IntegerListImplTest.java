@@ -1,12 +1,11 @@
-package com.example.homework2_14;
+package com.example.homework2_16;
 
-import com.example.homework2_14.Exception.InvalidIndexException;
-import com.example.homework2_14.Exception.NullItemException;
-import com.example.homework2_14.Exception.StorageIsFullException;
-import com.example.homework2_14.Impl.IntegerListImpl;
+import com.example.homework2_16.Exception.InvalidIndexException;
+import com.example.homework2_16.Exception.NullItemException;
+import com.example.homework2_16.Exception.StorageIsFullException;
+import com.example.homework2_16.Impl.IntegerListImpl;
 import org.junit.jupiter.api.Test;
 
-import static com.example.homework2_14.Impl.IntegerListImpl.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegerListImplTest {

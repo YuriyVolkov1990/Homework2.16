@@ -1,9 +1,9 @@
-package com.example.homework2_14.Impl;
+package com.example.homework2_16.Impl;
 
-import com.example.homework2_14.Exception.InvalidIndexException;
-import com.example.homework2_14.Exception.NullItemException;
-import com.example.homework2_14.Exception.StorageIsFullException;
-import com.example.homework2_14.Interface.IntegerList;
+import com.example.homework2_16.Exception.InvalidIndexException;
+import com.example.homework2_16.Exception.NullItemException;
+import com.example.homework2_16.Exception.StorageIsFullException;
+import com.example.homework2_16.Interface.IntegerList;
 
 import java.util.Arrays;
 
@@ -80,6 +80,7 @@ public class IntegerListImpl implements IntegerList {
     public boolean contains(Integer item) {
         return indexOf(item) > -1;
     }
+
     @Override
     public int indexOf(Integer item) {
         for (int i = 0; i < size; i++) {
@@ -132,6 +133,7 @@ public class IntegerListImpl implements IntegerList {
     public Integer[] toArray() {
         return Arrays.copyOf(m, size);
     }
+
     @Override
     public void sortSelection(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
@@ -144,6 +146,7 @@ public class IntegerListImpl implements IntegerList {
             swapElements(arr, i, minElementIndex);
         }
     }
+
     @Override
     public boolean binarySearch(int[] arr, int element) {
         sortSelection(arr);
@@ -188,5 +191,4 @@ public class IntegerListImpl implements IntegerList {
         arr[indexA] = arr[indexB];
         arr[indexB] = tmp;
     }
-
 }
