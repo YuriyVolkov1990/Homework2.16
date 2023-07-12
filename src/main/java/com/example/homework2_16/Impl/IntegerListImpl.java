@@ -2,14 +2,13 @@ package com.example.homework2_16.Impl;
 
 import com.example.homework2_16.Exception.InvalidIndexException;
 import com.example.homework2_16.Exception.NullItemException;
-import com.example.homework2_16.Exception.StorageIsFullException;
 import com.example.homework2_16.Interface.IntegerList;
 
 import java.util.Arrays;
 
 public class IntegerListImpl implements IntegerList {
     private int size;
-    private final Integer[] m;
+    private Integer[] m;
 
     public IntegerListImpl() {
         m = new Integer[10];
@@ -175,8 +174,8 @@ public class IntegerListImpl implements IntegerList {
     }
 
     private void validateSize() {
-        if (size == m.length) {
-            throw new StorageIsFullException();
+        if (size >= m.length) {
+            grow(size);
         }
     }
 
@@ -191,4 +190,8 @@ public class IntegerListImpl implements IntegerList {
         arr[indexA] = arr[indexB];
         arr[indexB] = tmp;
     }
+    private void grow(int oldSize) {
+        System.arraycopy(m,0,m = new Integer[(int) (oldSize * 1.5)],0,size);
+    }
+
 }
