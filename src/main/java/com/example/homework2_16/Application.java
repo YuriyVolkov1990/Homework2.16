@@ -1,12 +1,29 @@
 package com.example.homework2_16;
 
+import com.example.homework2_16.Impl.IntegerListImpl;
+import com.example.homework2_16.Interface.IntegerList;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Arrays;
+
 
 @SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {
 
+		IntegerList m = new IntegerListImpl(5);
+		m.add(4);
+		m.add(8);
+		m.add(2);
+		m.add(5);
+		m.add(7);
+		m.add(9);
+		System.out.println(Arrays.toString(m.toArray()));
+		System.out.println(m.size());
+		System.out.println(m.quickSort(m,
+				0,
+				5));
 //		SpringApplication.run(Application.class, args);
 		long start1 = System.currentTimeMillis();
 

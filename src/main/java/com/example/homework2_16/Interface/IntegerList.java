@@ -74,7 +74,9 @@ public interface IntegerList {
     // из строк в списке
     // и вернуть его.
     Integer[] toArray();
+    Integer partition(Integer[] arr, int begin, int end);
+    Integer quickSort(Integer[] arr, int begin, int end);
+    void sortSelection(Integer[] arr);
 
-    boolean binarySearch(int[] arr, int element);
-    void sortSelection(int[] arr);
+    boolean binarySearch(Integer[] arr, int element);
 }
